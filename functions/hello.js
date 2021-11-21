@@ -9,7 +9,8 @@ export async function onRequest(context) {
       data, // arbitrary space for passing data between middlewares
     } = context;
   
-    const value = await db.get("orders:1")
+    const key = "orders:1"
+    const value = await db.get(key)
     if (value === null) {
         await db.put(key, "orders-list")
     }
